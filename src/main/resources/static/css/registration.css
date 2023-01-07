@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ----------------ROOT VARIABLES ---------------*/
+:root{
+	--color-primary-light: #a7b1fa;
+	--color-primary: #7380ec;
+	--color-primary-dark: #4455cd;
+	--color-danger: #ff7782;
+	--color-success: #41f1b6;
+	--color-warning: #ffbb55;
+	--color-primary-variant: #111e88;
+
+	--color-gray-light: #86848c;
+	--color-gray-dark: #56555e;
+
+	--card-border-radius: 2rem;
+	--border-radius-1: 0.4rem;
+	--border-radius-2: 0.8rem;
+	--border-radius-3: 1.2rem;
+
+	--card-padding: 1.8rem;
+	--padding-mini: 0.5rem;
+	--padding-1: 1.2rem;
+	--padding-2: 8px;
+
+	--body-margin-top: 4rem;
+
+	--btn-border-radius: 7px;
+
+}
+
+
+*{
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	appearance: none;
+	border: 0;
+	text-decoration: none;
+	list-style: none;
+	box-sizing: border-box;
+}
+
+html{
+	font-size: 14px;
+}
+
+body{
+	width: 100vw;
+	height: 100vh;
+	font-family: poppins, sans-serif;
+	font-size: 0.88rem;
+	background: var(--color-background);
+	user-select: none;
+	overflow-x: hidden;
+	color: var(--color-dark);
+	margin-top: var(--body-margin-top);
+
+}
+
+a{
+	color: var(--color-dark);
+}
+
+img{
+	display: block;
+	width: 100%;
+}
+
+h1{
+	font-weight: 800;
+	font-size: 1.8rem;
+}
+
+h2{
+	font-size: 1.4rem;
+}
+
+h3{
+	font-size: 0.87rem;
+}
+
+h4{
+	font-size: 0.8rem;
+}
+
+h5{
+	font-size: 0.77rem;
+}
+
+small{
+	font-size: 0.76rem;
+}
+
+.profile-photo{
+	width: 2.8rem;
+	height: 2.8rem;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.text-muted{
+	color: var(--color-info-dark);
+}
+
+p{
+	color: var(--color-dark-variant);
+}
+
+b{
+	color: var(--color-dark);
+}
+
+.primary{
+	color: var(--color-primary);
+}
+
+.danger{
+	color: var(--color-danger);
+}
+
+.success{
+	color: var(--color-success);
+}
+
+.warning{
+	color: var(--color-warning);
+}
+
+.psf-bg-primary{
+	background: var(--color-primary);
+}
+
+.psf-btn-primary{
+	background: var(--color-primary);
+	padding: var(--padding-mini);
+	border-radius: var(--btn-border-radius);
+	font-size: 1.2rem;
+	color: var(--color-dark);
+}
+
+.psf-btn-primary:hover{
+	background: var(--color-primary-dark);
+}
+
+/*===================================NAV BAR===============================*/
+nav{
+	width: 100%;
+	background: var(--color-white);
+	padding: 1rem 0;
+}
+
+nav .container{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	width: 96%;
+	margin: 0 auto;
+}
+
+nav .container .logo{
+	display: flex;
+	gap: 2rem;
+	justify-content: space-between;
+	align-items: center;
+}
+
+nav .container .logo img.image-logo{
+	width: 2rem;
+	height: 2rem;
+}
+
+/*////////////////top right//////////*/
+
+nav .container .top{
+	display: flex;
+	justify-content: end;
+	gap: 2rem;
+}
+
+
+nav .container .top .theme-toggler{
+	background: var(--color-light);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 1.6rem;
+	width: 4.2rem;
+	cursor: pointer;
+	border-radius: var(--border-radius-1);
+}
+
+nav .container .top .theme-toggler span{
+	font-size: 1.2rem;
+	width: 50%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+nav .container .top .theme-toggler span.active{
+	background: var(--color-primary);
+	color: white;
+	border-radius: var(--border-radius-1);
+}
+
+.registration-form{
+	width: 30%;
+}
+
+.registration{
+	background: var(--color-white);
+}
+
+
+/*===================================MEDIA QUERIES Large Screen=============================*/
+/*===================================MEDIA QUERIES Large Screen=============================*/
+/*===================================MEDIA QUERIES Large Screen=============================*/
+
+@media  screen and (max-width: 1200px) {
+	.container{
+		width: 94%;
+		grid-template-columns: 7rem auto 23rem;
+	}
+
+	.registration-form{
+		width: 50%;
+	}
+
+
+}
+
+/*=============================MEDIA QUERIES MOBILE AND TABLETS*/
+@media screen and (max-width: 768px){
+	.container{
+		width: 100%;
+		grid-template-columns: 1fr;
+	}
+
+	nav .container{
+		width: 100%;
+	}
+
+	nav .container .logo{
+		gap: 0.5rem;
+	}
+
+	.registration-form{
+		width: 100%;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

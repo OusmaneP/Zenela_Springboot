@@ -1,0 +1,155 @@
+/*===================================NAV BAR===============================*/
+nav{
+    width: 100%;
+    background: var(--color-white);
+    padding: 1rem 0;
+}
+
+nav .nav-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 96%;
+    margin: 0 auto;
+}
+
+nav .nav-container .logo a{
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .nav-container .logo a img.image-logo{
+    width: 2rem;
+    height: 2rem;
+}
+
+
+
+/*////////////////top right//////////*/
+
+nav .nav-container .top{
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
+}
+
+.messenger-btn{
+
+}
+.notification{
+    position: absolute;
+    top: -3px;
+    color: var(--color-danger);
+}
+
+
+nav .nav-container .top .theme-toggler{
+    background: var(--color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 1.6rem;
+    width: 4.2rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-1);
+}
+
+nav .nav-container .top .theme-toggler{
+    margin-top: 0.5rem;
+}
+
+nav .nav-container .top .theme-toggler span{
+    font-size: 1.2rem;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav .nav-container .top .theme-toggler span.active{
+    background: var(--color-primary);
+    color: white;
+    border-radius: var(--border-radius-1);
+}
+
+nav .nav-container .top .profile{
+    background: var(--color-light);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius-2);
+    padding-left: var(--padding-mini);
+}
+
+nav .nav-container .top .profile a{
+    display: flex;
+    gap: 1rem;
+    align-items: end;
+}
+
+nav .nav-container .top button{
+    display: none;
+}
+
+
+/*=============================MEDIA QUERIES MINI TABLETS 📴📴📴📴📴📴*/
+@media screen and (max-width: 856px){
+    nav .nav-container{
+        width: 100%;
+    }
+
+    nav .nav-container .logo a{
+        gap: 0.5rem;
+    }
+
+
+    nav .nav-container .top .theme-toggler{
+        width: 3rem;
+    }
+
+    nav .nav-container .top .profile{
+        background: transparent;
+        padding-left: 0;
+        box-shadow: none;
+        border-radius: var(--border-radius-2);
+    }
+
+    nav .nav-container .top .profile .info{
+        display: none;
+    }
+
+    nav .nav-container .top button{
+        display: inline-block;
+        cursor: pointer;
+        color: var(--color-dark);
+        background: transparent;
+    }
+
+    nav .nav-container .top button span{
+        font-size: 2rem;
+    }
+
+
+}
+
+
+/*=============================MEDIA QUERIES MOBILE 📴📴📴📴📴📴📴📴📴📴📴📴*/
+@media screen and (max-width: 744px){
+
+    nav .nav-container .logo a h2{
+        display: none;
+    }
+
+    nav .nav-container .top{
+        gap: 0.8rem;
+    }
+
+}
+
+/*=============================MEDIA QUERIES MINI MOBILE 📴📴📴📴📴📴📴📴📴📴📴📴*/
+@media screen and (max-width: 450px){
+
+
+}

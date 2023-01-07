@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Chatbot</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+</head>
+<body>
+
+<div class="messenger" th:fragment="messenger-container">
+
+    <input type="hidden" id="principal-id" th:value="${Principal.getId}">
+
+    <div class="title">
+        <span class="material-symbols-sharp" id="back-messenger">arrow_back</span>
+        <div id="messenger-header">Simple online messenger</div>
+        <span class="material-symbols-sharp" id="close-messenger">close</span>
+    </div>
+
+    <div class="contacts" id="messenger-contacts">
+
+        <div class="contact" th:each="MyFriend : ${MyFriends}" th:id="'contact_id'+${MyFriend.getId}" th:attr="onclick=|selectUser('${MyFriend.getFirstName}', '${MyFriend.getLastName}', '${MyFriend.getId}', '${MyFriend.getProfile}', event)|">
+            <div class="profile-photo">
+                <img th:src="@{${MyFriend.getProfile}}" alt="">
+            </div>
+            <div class="contact-name">
+                <h2>[[${MyFriend.getFirstName}]] [[${MyFriend.getLastName}]]</h2>
+            </div>
+            <div>
+                <h2 th:if="${MyFriend.missedMessages} > 0" class="danger" style="font-weight: bold;">[[${MyFriend.missedMessages}]]</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form messenger-form" id="messenger-form">
+
+    </div>
+
+    <div class="typing-field" id="messenger-footer">
+        <div class="input-data">
+            <input type="text" placeholder="Type something here..." id="inputMessage" required>
+            <button class="material-symbols-sharp" id="sendMessage">send</button>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

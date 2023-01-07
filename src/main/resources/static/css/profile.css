@@ -1,0 +1,665 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ----------------ROOT VARIABLES ---------------*/
+:root{
+    --color-primary-light: #a7b1fa;
+    --color-primary: #7380ec;
+    --color-primary-dark: #4455cd;
+    --color-danger: #ff7782;
+    --color-success: #41f1b6;
+    --color-warning: #ffbb55;
+    --color-primary-variant: #111e88;
+
+
+    --color-gray-light: #86848c;
+    --color-gray-dark: #56555e;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --padding-mini: 0.5rem;
+    --padding-1: 1.2rem;
+    --padding-2: 8px;
+
+    --body-margin-top: 4rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-light);
+
+    --btn-border-radius: 7px;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    appearance: none;
+    border: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 14px;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    font-family: poppins, sans-serif;
+    font-size: 0.88rem;
+    background: var(--color-background);
+    user-select: none;
+    overflow-x: hidden;
+    color: var(--color-dark);
+    margin-top: var(--body-margin-top);
+
+}
+
+a{
+    color: var(--color-dark);
+    text-decoration: none;
+}
+
+img{
+    display: block;
+    width: 100%;
+}
+
+h1{
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+h2{
+    font-size: 1.4rem;
+}
+
+h3{
+    font-size: 0.87rem;
+}
+
+h4{
+    font-size: 0.8rem;
+}
+
+h5{
+    font-size: 0.77rem;
+}
+
+small{
+    font-size: 0.76rem;
+}
+
+.profile-photo{
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.profile-cover-photo{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
+    border: 2px solid var(--color-primary);
+}
+
+.liked{
+    color: var(--color-danger);
+    text-align: center;
+}
+
+.unliked{
+    color: black;
+}
+
+.text-muted{
+    color: var(--color-info-dark);
+}
+
+p{
+    color: var(--color-dark-variant);
+}
+
+b{
+    color: var(--color-dark);
+}
+
+.primary{
+    color: var(--color-primary);
+}
+
+.danger{
+    color: var(--color-danger);
+}
+
+.success{
+    color: var(--color-success);
+}
+
+.warning{
+    color: var(--color-warning);
+}
+
+.psf-bg-primary{
+    background: var(--color-primary);
+}
+
+.psf-btn-primary{
+    background: var(--color-primary);
+    padding: 0.2rem;
+    border-radius: var(--btn-border-radius);
+    font-size: 1.2rem;
+    color: var(--color-dark);
+}
+
+.psf-btn-primary:hover{
+    background: var(--color-primary-dark);
+}
+
+
+/*=====================================GENERAL CONTAINER==================================*/
+
+.general-container{
+    display: grid;
+    width: 100%;
+    margin: 0 auto;
+    gap: 0;
+    grid-template-columns: 14rem auto 18rem;
+}
+
+/*=====================================SIDE BAR==================================*/
+
+aside{
+    height: 100vh;
+    margin-top: 0;
+}
+
+aside .sidebar{
+    background: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    height: 86vh;
+    position: relative;
+    top: 0.4rem;
+    margin-top: 0;
+    overflow-y: auto;
+}
+
+aside .close{
+    display: none;
+}
+
+aside h3{
+    font-weight: 500;
+}
+
+aside .sidebar a{
+    display: flex;
+    color: var(--color-info-dark);
+    margin: 1.5rem 1.5rem 1rem;
+    gap: 1rem;
+    align-items: center;
+    position: relative;
+    height: 3.7rem;
+    transition: all 300ms ease;
+    text-decoration: none;
+}
+
+aside .sidebar a span{
+    font-size: 1.6rem;
+    transition: all 300ms ease;
+}
+
+
+aside .sidebar a.active{
+    background: var(--color-light);
+    color: var(--color-primary);
+    margin-left: 0;
+}
+
+aside .sidebar a.active:before{
+    content: '';
+    width: 6px;
+    height: 100%;
+    background: var(--color-primary);
+}
+
+aside .sidebar a.active span{
+    color: var(--color-primary);
+    margin-left: calc(1rem - 3px);
+}
+
+aside .sidebar a:hover{
+    color: var(--color-primary);
+}
+
+aside .sidebar a:hover span{
+    margin-left: 0.4rem;
+}
+
+aside .sidebar .message-count{
+    background: var(--color-danger);
+    color: var(--color-white);
+    padding: 2px 10px;
+    font-size: 11px;
+    border-radius: var(--border-radius-1);
+}
+
+/*=======================MAIN========================*/
+
+main{
+    margin-top: 0;
+    height: 100vh;
+    position: relative;
+    top: 0.4rem;
+    overflow-y: auto;
+}
+
+main .cover{
+    width: 100%;
+    background: var(--color-white);
+}
+
+main .cover .cover-photo{
+    width: 100%;
+    height: 90%;
+    object-fit: contain;
+}
+
+main .profile-cover{
+    display: none;
+}
+
+main .cover > #change-cover{
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+}
+
+main .modal-content {
+    background: var(--color-white);
+    color: var(--color-dark);
+}
+
+main .modal-content input, main .modal-content textarea{
+    color: var(--color-dark);
+    background: transparent;
+}
+
+main .create-post-tabs{
+    margin-top: 1rem;
+}
+
+/*//////////////// Recent Posts //////////////////////*/
+
+main .recent-posts{
+    margin: auto;
+}
+
+main .recent-posts .posts .post{
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    padding-top: var(--padding-mini);
+    transition: all 300ms ease;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 36rem;
+}
+
+
+main .recent-posts .posts .post .post-header{
+    display: grid;
+    grid-template-columns: 2.8rem auto;
+    gap: 1rem;
+    margin-right: var(--margin-mini);
+    margin-left: var(--margin-mini);
+}
+
+
+main .post-comment{
+    margin: var(--margin-mini);
+}
+
+main .post-file-zone{
+    height: 45rem;
+    width: 100%;
+    background: var(--color-light);
+}
+
+main .post-file-zone .post-file{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+main .post-footer{
+
+}
+
+main .post-footer {
+    height: 4rem;
+    margin-bottom: var(--margin-mini);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: var(--padding-mini);
+    padding-left: var(--padding-mini);
+    border-bottom: 1px solid var(--color-dark);
+}
+
+main .post-footer .button{
+    width: 32%;
+    text-align: center;
+}
+
+main .post-footer .button div{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    margin: auto;
+
+}
+
+main .post-footer .button:hover{
+    background: var(--color-light);
+}
+
+.insertCommentDiv{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin: var(--margin-mini);
+    color: var(--color-gray-light);
+    background: var(--color-light);
+    padding: var(--padding-mini);
+    border-radius: var(--border-radius-2);
+}
+
+.insertCommentDiv input[type='text']{
+    color: var(--color-dark);
+    background: transparent;
+    width: 100%;
+}
+
+.commentList{
+    display: none;
+}
+
+/*//////////////// Comments List //////////////////////*/
+.commentList .recent-updates{
+    margin-top: 1rem;
+}
+
+.commentList .recent-updates h2{
+    margin: 0.5rem;
+}
+
+.commentList .recent-updates .updates{
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+.commentList .recent-updates .updates:hover{
+    box-shadow: none;
+}
+
+.commentList .recent-updates .updates .update{
+    display: grid;
+    grid-template-columns: 2.8rem auto;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+/*==========================RECENT ORDERS=========================*/
+/*=======================RIGHT=============================*/
+/*=======================RECENT UPDATES=============================*/
+.right{
+    margin-top: 0;
+    height: 100vh;
+    position: relative;
+    top: 0.4rem;
+    overflow-y: auto;
+}
+
+.right .profile-cover{
+    width: 15rem;
+    height: 15rem;
+    background: transparent;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.right .profile-cover-photo{
+    margin: auto;
+}
+
+.right #change-profile2{
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+    margin: auto;
+}
+
+.right #change-profile:hover{
+    color: white;
+}
+
+.right .recent-updates .profile-photo{
+    width: 5rem;
+    height: 5rem;
+}
+
+.right .recent-updates{
+    margin-top: 1rem;
+}
+
+.right .recent-updates > h2{
+    margin-top: 0.8rem;
+}
+
+.right .recent-updates .updates{
+    padding: var(--padding-mini);
+    max-height: 40vh;
+    overflow-y: auto;
+}
+
+.right .recent-updates .updates .update{
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+.right .recent-updates .updates:hover{
+    box-shadow: none;
+}
+
+.right .recent-updates .updates .update{
+    width: 98%;
+    display: grid;
+    grid-template-columns: 5.1rem auto 3rem;
+    gap: 0.5rem;
+    align-items: center;
+    padding-right: 2rem;
+    margin-bottom: 0.3rem;
+}
+
+.right .recent-updates .updates .update .message h2{
+    padding: 0;
+    margin: 0;
+}
+/*===================================MEDIA QUERIES=============================*/
+/*===================================MEDIA QUERIES=============================*/
+/*===================================MEDIA QUERIES=============================*/
+
+@media  screen and (max-width: 1200px) {
+    .general-container{
+        width: 100%;
+        grid-template-columns: 7rem auto 18rem;
+    }
+
+
+    aside .sidebar h3{
+        display: none;
+    }
+
+    aside .sidebar a{
+        width: 5.6rem;
+    }
+
+}
+
+/*=============================MEDIA QUERIES TABLETS 📴📴*/
+@media screen and (max-width: 900px){
+    .general-container{
+        width: 100%;
+        grid-template-columns: 7rem 38rem auto;
+    }
+}
+
+/*=============================MEDIA QUERIES MINI TABLETS*/
+@media screen and (max-width: 856px){
+    .general-container{
+        width: 100%;
+        grid-template-columns: 38rem auto;
+    }
+
+    aside{
+        position: fixed;
+        left: -100%;
+        background: var(--color-white);
+        width: 18rem;
+        z-index: 3;
+        box-shadow: 1rem 3rem 4rem var(--color-light);
+        height: 100vh;
+        padding-right: var(--card-padding);
+        display: none;
+        animation: showMenu 600ms ease forwards;
+    }
+
+    @keyframes showMenu {
+        to{
+            left: 0;
+        }
+    }
+
+    aside .close{
+        display: inline-block;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 4;
+    }
+
+    aside .sidebar a{
+        margin-left: 1.5rem;
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+
+    aside .sidebar h3{
+        display: inline-block;
+    }
+
+    aside .sidebar a{
+        width: 100%;
+        height: 3.4rem;
+    }
+
+    /*	--------main---------*/
+
+    main .cover{
+    }
+
+    main .profile-cover{
+        width: 7rem;
+        height: 7rem;
+        overflow: hidden;
+        display: block;
+        position: absolute;
+        top: 0;
+        background: transparent;
+    }
+
+    main #change-profile{
+        position: absolute;
+        top: 0;
+        color: var(--color-primary);
+    }
+
+    main #change-profile:hover{
+        color: white;
+    }
+
+    main{
+        margin-top: 1rem;
+        padding: 0;
+        width: 100%;
+    }
+
+    main .recent-posts .posts .post{
+        width: 100%;
+    }
+
+}
+
+/*=============================MEDIA QUERIES MOBILE 📴📴📴📴📴📴📴📴📴📴📴📴*/
+@media screen and (max-width: 744px){
+
+    .general-container{
+        width: 100%;
+        max-width: 35rem;
+        grid-template-columns: 1fr;
+    }
+
+    main .recent-posts .posts .post{
+        padding: var(--padding-mini);
+        width: 100%;
+    }
+
+    main .post-file-zone{
+        height: 40rem;
+        width: 100%;
+    }
+
+    .right{
+        display: none;
+    }
+}
+
+/*=============================MEDIA QUERIES MINI MOBILE 📴📴📴📴📴📴📴📴📴📴📴📴*/
+@media screen and (max-width: 450px){
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

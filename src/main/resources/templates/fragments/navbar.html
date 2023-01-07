@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<nav class="navbar fixed-top" th:fragment="nav">
+    <div class="nav-container">
+        <div class="logo">
+            <a href="/">
+                <img src="/images/logo.png" class="image-logo">
+                <h2 class="primary">PODO<span class="danger">SOFT</span> </h2>
+            </a>
+        </div>
+
+        <div id="searchUsers" class="search-bar is">
+            <div class="is_input-container">
+                <input class="is_input" type="search" placeholder="Search" spellcheck="false">
+                <span class="material-symbols-sharp close_search">close</span>
+            </div>
+        </div>
+
+        <!--search mobile-->
+
+        <div class="is_mobile">
+            <span class="material-symbols-sharp">Search</span>
+        </div>
+
+        <div>
+            <span class="material-symbols-sharp">People</span>
+            <span class="notification" th:if="${Notifications.friendship} > 0" th:text="${Notifications.friendship}"></span>
+        </div>
+
+        <div>
+            <span class="material-symbols-sharp">Notifications</span>
+        </div>
+
+        <div class="messenger-btn">
+            <span class="material-symbols-sharp">mail</span>
+            <span class="notification message-count" th:if="${Notifications.messages} > 0" th:text="${Notifications.messages}"></span>
+            <span class="notification message-count" th:if="${Notifications.messages} < 1" ></span>
+        </div>
+
+        <div class="top">
+            <div class="theme-toggler">
+                <span class="material-symbols-sharp active">light_mode</span>
+                <span class="material-symbols-sharp">dark_mode</span>
+            </div>
+            <div class="profile">
+                <a th:href="@{/profile}" href="#">
+                    <div class="info">
+                        <p>Hey, <b th:text="${Principal.getFirstName}"></b></p>
+                    </div>
+                    <div class="profile-photo">
+                        <img th:src="@{${Principal.getProfile}}" alt="profile photo">
+                    </div>
+                </a>
+            </div>
+            <button id="menu-btn">
+                <span class="material-symbols-sharp">menu</span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+</body>
+</html>
