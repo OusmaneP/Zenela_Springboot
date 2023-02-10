@@ -36,10 +36,10 @@ public class PostServiceImpl implements PostService {
 
         String type = file.getContentType();
 
-        String publicUrl = fileService.uploadFile(file);
+        String publicUrl = fileService.uploadPhotoFile(file);
         Post post = new Post(posterId, comment, type, publicUrl, new Date());
 
-        Post savedPost = postRepository.save(post);
+        postRepository.save(post);
 
         return publicUrl;
     }
@@ -57,16 +57,17 @@ public class PostServiceImpl implements PostService {
         return false;
     }
 
+    // Update Post Comment
+    @Override
+    public void updatePostComment(Long postId, String comment){
+        postRepository.updatePostComment(postId, comment);
+    }
+
     // Find PostByID
     @Override
     public Optional<Post> findPostById(Long postId){
         Optional<Post> post = postRepository.findById(postId);
         return post;
-    }
-
-    @Override
-    public void updatePostComment(Long postId, String comment){
-        postRepository.updatePostComment(postId, comment);
     }
 
     // Get NewPosts
@@ -83,7 +84,8 @@ public class PostServiceImpl implements PostService {
 
             if(owner.isPresent()){
                 post.setPosterName(owner.get().getFirstName() + "  " + owner.get().getLastName());
-                post.setPosterProfile(owner.get().getProfile());
+                // Profile or Thumb
+                post.setPosterProfile(owner.get().getProfileThumb() == null || owner.get().getProfileThumb().isEmpty()? owner.get().getProfile() : owner.get().getProfileThumb());
 
                 post.setLikingPossibility(new LikingPossibility());
                 post.getLikingPossibility().setPossible(1);
@@ -117,7 +119,7 @@ public class PostServiceImpl implements PostService {
 
                     if (commentOwner.isPresent()){
                         comment.setCommenterName(commentOwner.get().getFirstName() + " " + commentOwner.get().getLastName());
-                        comment.setCommenterProfile(commentOwner.get().getProfile());
+                        comment.setCommenterProfile(commentOwner.get().getProfileThumb() == null || commentOwner.get().getProfileThumb().isEmpty()? commentOwner.get().getProfile() : commentOwner.get().getProfileThumb());
                         post.getCommentsList().add(comment);
                     }
                 }
@@ -143,7 +145,7 @@ public class PostServiceImpl implements PostService {
 
             if(owner.isPresent()){
                 post.setPosterName(owner.get().getFirstName() + "  " + owner.get().getLastName());
-                post.setPosterProfile(owner.get().getProfile());
+                post.setPosterProfile(owner.get().getProfileThumb() == null || owner.get().getProfileThumb().isEmpty()? owner.get().getProfile() : owner.get().getProfileThumb());
 
                 post.setLikingPossibility(new LikingPossibility());
                 post.getLikingPossibility().setPossible(1);
@@ -177,7 +179,7 @@ public class PostServiceImpl implements PostService {
 
                     if (commentOwner.isPresent()){
                         comment.setCommenterName(commentOwner.get().getFirstName() + " " + commentOwner.get().getLastName());
-                        comment.setCommenterProfile(commentOwner.get().getProfile());
+                        comment.setCommenterProfile(commentOwner.get().getProfileThumb() == null || commentOwner.get().getProfileThumb().isEmpty()? commentOwner.get().getProfile() : commentOwner.get().getProfileThumb());
                         post.getCommentsList().add(comment);
                     }
                 }
@@ -189,6 +191,7 @@ public class PostServiceImpl implements PostService {
         return customPosts;
     }
 
+    // Get User's Posts
     @Override
     public Collection<Post> getUsersPosts(Long userId, Long principalId) {
 
@@ -203,7 +206,7 @@ public class PostServiceImpl implements PostService {
 
             if(owner.isPresent()){
                 post.setPosterName(owner.get().getFirstName() + "  " + owner.get().getLastName());
-                post.setPosterProfile(owner.get().getProfile());
+                post.setPosterProfile(owner.get().getProfileThumb() == null || owner.get().getProfileThumb().isEmpty()? owner.get().getProfile() : owner.get().getProfileThumb());
 
                 post.setLikingPossibility(new LikingPossibility());
                 post.getLikingPossibility().setPossible(1);
@@ -226,7 +229,7 @@ public class PostServiceImpl implements PostService {
 
                     if (commentOwner.isPresent()){
                         comment.setCommenterName(commentOwner.get().getFirstName() + " " + commentOwner.get().getLastName());
-                        comment.setCommenterProfile(commentOwner.get().getProfile());
+                        comment.setCommenterProfile(commentOwner.get().getProfileThumb() == null || commentOwner.get().getProfileThumb().isEmpty()? commentOwner.get().getProfile() : commentOwner.get().getProfileThumb());
                         post.getCommentsList().add(comment);
                     }
                 }
@@ -239,6 +242,7 @@ public class PostServiceImpl implements PostService {
 
     }
 
+    // Get User's Images
     @Override
     public Collection<Post> getUsersImages(Long userId, Long principalId) {
 
@@ -254,7 +258,7 @@ public class PostServiceImpl implements PostService {
 
                 if (owner.isPresent()) {
                     post.setPosterName(owner.get().getFirstName() + "  " + owner.get().getLastName());
-                    post.setPosterProfile(owner.get().getProfile());
+                    post.setPosterProfile(owner.get().getProfileThumb() == null || owner.get().getProfileThumb().isEmpty()? owner.get().getProfile() : owner.get().getProfileThumb());
 
                     post.setLikingPossibility(new LikingPossibility());
                     post.getLikingPossibility().setPossible(1);
@@ -276,7 +280,7 @@ public class PostServiceImpl implements PostService {
 
                         if (commentOwner.isPresent()) {
                             comment.setCommenterName(commentOwner.get().getFirstName() + " " + commentOwner.get().getLastName());
-                            comment.setCommenterProfile(commentOwner.get().getProfile());
+                            comment.setCommenterProfile(commentOwner.get().getProfileThumb() == null || commentOwner.get().getProfileThumb().isEmpty()? commentOwner.get().getProfile() : commentOwner.get().getProfileThumb());
                             post.getCommentsList().add(comment);
                         }
                     }
@@ -290,6 +294,7 @@ public class PostServiceImpl implements PostService {
 
     }
 
+    // Get Saved Posts
     @Override
     public Collection<Post> getSavedPosts(ArrayList<Long> postIds, Long principalId) {
 
@@ -305,7 +310,7 @@ public class PostServiceImpl implements PostService {
 
             if (owner.isPresent()) {
                 post.setPosterName(owner.get().getFirstName() + "  " + owner.get().getLastName());
-                post.setPosterProfile(owner.get().getProfile());
+                post.setPosterProfile(owner.get().getProfileThumb() == null || owner.get().getProfileThumb().isEmpty()? owner.get().getProfile() : owner.get().getProfileThumb());
 
                 post.setLikingPossibility(new LikingPossibility());
                 post.getLikingPossibility().setPossible(1);
@@ -327,7 +332,7 @@ public class PostServiceImpl implements PostService {
 
                     if (commentOwner.isPresent()) {
                         comment.setCommenterName(commentOwner.get().getFirstName() + " " + commentOwner.get().getLastName());
-                        comment.setCommenterProfile(commentOwner.get().getProfile());
+                        comment.setCommenterProfile(commentOwner.get().getProfileThumb() == null || commentOwner.get().getProfileThumb().isEmpty()? commentOwner.get().getProfile() : commentOwner.get().getProfileThumb());
                         post.getCommentsList().add(comment);
                     }
                 }
@@ -393,7 +398,7 @@ public class PostServiceImpl implements PostService {
         String fileType = file.getContentType();
 
         String fileUrl = fileService.uploadFile(file);
-        String thumbUrl = fileService.uploadThumb(thumb);
+        String thumbUrl = fileService.uploadVideoThumb(thumb);
         Post post = new Post(posterId, comment, fileType, fileUrl, new Date());
         post.setThumbnail(thumbUrl);
 

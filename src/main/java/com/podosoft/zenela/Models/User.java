@@ -34,6 +34,8 @@ public class User {
 
     private String profile;
 
+    private String profileThumb;
+
     private String cover;
 
     private String bio;
@@ -164,5 +166,13 @@ public class User {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    public String getProfileThumb() {
+        return profileThumb;
+    }
+
+    public void setProfileThumb(String profileThumb) {
+        this.profileThumb = profileThumb;
     }
 }

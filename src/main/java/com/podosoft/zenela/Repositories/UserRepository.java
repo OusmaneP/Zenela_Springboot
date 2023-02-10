@@ -22,8 +22,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Transactional
     @Modifying
-    @Query("UPDATE User u SET u.profile = :profile where u.id = :userId")
-    int updateProfilePhoto(@Param("profile") String fileCode, @Param("userId") Long userId);
+    @Query("UPDATE User u SET u.profile = :profile, u.profileThumb = :profileThumb where u.id = :userId")
+    int updateProfilePhoto(@Param("profile") String fileCode, @Param("userId") Long userId, @Param("profileThumb") String thumbCode);
 
     @Transactional
     @Query(value = "SELECT * FROM users WHERE id NOT IN :principalId ORDER BY RAND() LIMIT 200", nativeQuery = true)

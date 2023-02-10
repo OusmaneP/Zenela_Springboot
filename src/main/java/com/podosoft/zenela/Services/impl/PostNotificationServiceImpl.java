@@ -43,7 +43,7 @@ public class PostNotificationServiceImpl implements PostNotificationService {
             Optional<Post> post = postRepository.findById(notification.getPostId());
             if (user.isPresent() && post.isPresent()){
                 notification.setNotifierName(user.get().getFirstName() + " " + user.get().getLastName());
-                notification.setNotifierProfile(user.get().getProfile());
+                notification.setNotifierProfile(user.get().getProfileThumb() == null || user.get().getProfileThumb().isEmpty()? user.get().getProfile() : user.get().getProfileThumb());
                 customNotifications.add(notification);
             }
         }

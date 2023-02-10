@@ -7,5 +7,9 @@ public interface FileService {
 
     boolean deleteFile(String url);
 
-    String uploadThumb(MultipartFile file);
+    String uploadVideoThumb(MultipartFile file);
+
+    String createUploadThumbnail(MultipartFile file);
+
+    String uploadPhotoFile(MultipartFile multipartFile);
 }

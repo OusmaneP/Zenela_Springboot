@@ -8,6 +8,7 @@ import com.podosoft.zenela.Models.User;
 import com.podosoft.zenela.Repositories.FriendRepository;
 import com.podosoft.zenela.Repositories.PostRepository;
 import com.podosoft.zenela.Repositories.UserRepository;
+import com.podosoft.zenela.Services.FileService;
 import com.podosoft.zenela.Services.MainService;
 import com.podosoft.zenela.Services.PostService;
 import com.podosoft.zenela.Websocket.Repository.MessageRepository;
@@ -26,13 +27,15 @@ public class MainServiceImpl implements MainService {
     private final PostService postService;
     private final FriendRepository friendRepository;
     private final MessageRepository messageRepository;
+    private final FileService fileService;
 
-    public MainServiceImpl(UserRepository userRepository, PostRepository postRepository, PostService postService, FriendRepository friendRepository, MessageRepository messageRepository) {
+    public MainServiceImpl(UserRepository userRepository, PostRepository postRepository, PostService postService, FriendRepository friendRepository, MessageRepository messageRepository, FileService fileService) {
         this.userRepository = userRepository;
         this.postRepository = postRepository;
         this.postService = postService;
         this.friendRepository = friendRepository;
         this.messageRepository = messageRepository;
+        this.fileService = fileService;
     }
 
     @Override
@@ -41,24 +44,28 @@ public class MainServiceImpl implements MainService {
     }
 
     @Override
-    public String uploadCoverProfile(String fileName, MultipartFile multipartFile, String comment, Long id, String updateType) throws IOException {
+    public String uploadCoverProfile(String fileName, MultipartFile multipartFile, String comment, Long posterId, String updateType) throws IOException {
 
-        String fileCode = postService.uploadPost(fileName, multipartFile, comment, id);
+        String fileCode = postService.uploadPost(fileName, multipartFile, comment, posterId);
 
         int update = 0;
         if (updateType.equals("cover")) {
-            update = userRepository.updateCoverPhoto(fileCode, id);
+            update = userRepository.updateCoverPhoto(fileCode, posterId);
         } else if (updateType.equals("profile")) {
-            update = userRepository.updateProfilePhoto(fileCode, id);
+            String thumbCode = fileService.createUploadThumbnail(multipartFile);
+            System.out.println(thumbCode);
+            update = userRepository.updateProfilePhoto(fileCode, posterId, thumbCode);
         }
 
         if (update == 1) {
             System.out.println("Updated successfully !");
+            return fileCode;
         } else {
-            System.out.println("Error updating cover");
+            System.out.println("Error updating cover or profile");
+            return "";
         }
 
-        return fileCode;
+
     }
 
     @Override
